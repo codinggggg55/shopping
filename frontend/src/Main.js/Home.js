@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { productsApi, useGetAllProductsQuery } from './Features/ProductsApi'
 import styled from 'styled-components'
 
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { addToCart } from './Features/cartSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,11 +13,16 @@ export default function Home() {
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
    const navigate = useNavigate();
+   const [buttonText, setButtonText] = useState('Add to Cart');
+   
+    // Get the cartItems state from the Redux store
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+
 
   const handleAddToCart = (product) =>{
   dispatch(addToCart(product));
-  navigate('/cart');
-     
+  navigate('');  
   }
   return (
     <HomeCss>
@@ -40,7 +45,10 @@ export default function Home() {
      <span className=""> {product.desc} </span> <span>$ {product.price}</span>
      </div>
 
-    <NavLink to={'/cart'} className="btn btn-primary text-center ms-4 mt-3 button1" onClick={()=> handleAddToCart(product) } >Add to Cart</NavLink>
+     <button className='btn btn-primary text-center ms-4 mt-3 button1' onClick={() => handleAddToCart(product)}>
+        Add to Cart
+      </button>
+  
   
 
 
@@ -116,7 +124,7 @@ const HomeCss = styled.div `
   .product {
     width: calc(50% - 1rem); /* On smaller screens, make each product occupy the full width */
     margin: 0.2rem; /* Adjusted margin for better spacing */
-max-width: 100%;
+    max-width: 100%;
 
   }
 }

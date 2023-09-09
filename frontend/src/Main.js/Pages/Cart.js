@@ -1,9 +1,26 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { addToCart, clearCart, decreaseCart, removeFromCart } from '../Features/cartSlice';
 
 export default function Cart() {
   const cart = useSelector( (state) => state.cart );
+  const dispatch = useDispatch();
+
+  const handleRemoveFromCart = (cartItem) => {
+    dispatch(removeFromCart(cartItem))
+  }
+  
+
+  const handleIncreaseCart = (cartItem) => {
+    dispatch(addToCart(cartItem))
+  }
+  const handleDecreaseCart = (cartItem) => {
+    dispatch(decreaseCart(cartItem))
+  }
+  const handleClearCart = () => {
+    dispatch(clearCart())
+  }
   const totalCartPrice = cart.cartItems.reduce(
     (total, cartItem) => total + cartItem.price * cartItem.cartQuantity,
     0
@@ -12,6 +29,7 @@ export default function Cart() {
     (total, cartItem) => total + cartItem.cartQuantity,
     0
   );
+
   return (
     <div   className='cart-container'>
     <h2 className='text-center py-5'>Shopping Cart</h2>
@@ -48,14 +66,14 @@ export default function Cart() {
             <p><span  className="text-muted">Size: </span> {cartItem.desc} </p>
           </div>
           <div  className="col-md-3 col-lg-3 col-xl-2 d-flex">
-            <button  className="btn btn-link px-2">
+            <button  className="btn btn-link px-2" onClick={() => handleDecreaseCart(cartItem)}>
               <i  className="fas fa-minus"></i>
             </button>
              
             <div className='count'>{cartItem.cartQuantity} </div>
            
 
-            <button  className="btn btn-link px-2">
+            <button  className="btn btn-link px-2" onClick={() => handleIncreaseCart(cartItem)}>
               <i  className="fas fa-plus"></i>
             </button>
           </div>
@@ -64,7 +82,7 @@ export default function Cart() {
             <h5  className="mb-0"> ${cartItem.price} &nbsp; $ {cartItem.price * cartItem.cartQuantity} </h5>
           </div>
           <div  className="col-md-1 col-lg-1 col-xl-1 text-end">
-            <a href="#!"  className="text-danger"><i  className="fas fa-trash fa-lg"></i></a>
+            <NavLink to={''} onClick={() => handleRemoveFromCart(cartItem)}  className="text-danger"><i  className="fas fa-trash fa-lg"></i></NavLink>
           </div>
          
         </div>
@@ -127,7 +145,7 @@ export default function Cart() {
             <p>Taxes and shipping calculated at checkout</p>
           </ul>
 
-          <button type="button" className="btn  btn-lg btn-block clear">
+          <button type="button" className="btn  btn-lg btn-block clear" onClick={() => handleClearCart()}>
             Clear Cart
           </button>
 

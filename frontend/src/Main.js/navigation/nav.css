@@ -1,0 +1,177 @@
+marquee{
+    background-color: black;
+    color: #fff;
+  
+  }
+  .part1{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .link1, .link2, .link3{
+    color: #fff;
+  }
+  .link1:hover{
+    color: rgb(109, 135, 239);
+  }
+
+  .link2:hover{
+    color: rgb(224, 13, 13);
+  }
+  .link3:hover{
+    color: rgb(19, 235, 58);
+  }
+
+  .nav1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .search-button, .cart-icon {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  
+  
+  .search-icon {
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Icon color */
+    width: 40px; /* Button width */
+    height: 40px; /* Button height */
+    border-radius: 50%; /* Make it round */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .message-box {
+    width: 280px;
+    height: 100px;
+    position: absolute;
+    top: 50px; /* Adjust the top position to position the message box below */
+    left: 30%; /* Adjust the left position to position the message box to the right */
+    background-color: #c1c7ca; /* Message box background color */
+    color: #fff; /* Icon color */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateX(-50%); /* Center the message box horizontally */
+    transition: opacity 0.3s ease, top 0.3s ease, left 0.3s ease;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .message-box i {
+    margin-bottom: 10px; /* Add space below the icon */
+  }
+  
+  .search-button:hover .search-icon {
+    background-color: #2980b9; /* Change button background color on hover */
+  }
+  
+  .search-button:hover .message-box {
+    opacity: 1;
+    display: flex;
+    top: 100%; /* Adjust the top position to place the message box below */
+    left: 70%; /* Adjust the left position to place the message box to the right */
+  }
+
+
+
+
+  .micon{
+    color: #cee1ed;
+    background-color: #2980b9 ;
+   
+  }
+  .input1{
+    width: 80%;
+  }
+  
+  /* Style for the cart icon container */
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Style for the cart icon (adjust font-size and color as needed) */
+.cart-icon i {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Style for the quantity indicator */
+.cart-quantity {
+  position: absolute;
+  top: -10px; /* Adjust to position the quantity above the icon */
+  right: -10px; /* Adjust to position the quantity to the right of the icon */
+  background-color: #ff5733; /* Background color of the quantity indicator */
+  color: #fff; /* Text color of the quantity indicator */
+  border-radius: 50%; /* Make it round */
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  font-size: 14px; /* Font size of the quantity indicator */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the message box */
+.message-box1 {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1;
+  width: 800px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+/* Show the message box when hovering over cart-icon */
+.cart-icon:hover .message-box1 {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+  
+  @media screen and (max-width: 768px) {
+    .part1 .navicons {
+      display: none; /* Hide the navigation icons */
+    }
+    .i1,.i2,.i3,.navicons{display: none;}
+
+    .login1, .cart-price, .search-button{display: none ;}
+    .message-box1{display: none;}
+  
+  }
+ 
+  
+  
+  
+  
+  

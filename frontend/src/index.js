@@ -12,11 +12,13 @@ import productReducer, {productsFetch} from './Main.js/Features/productSlice';
 import { productsApi } from './Main.js/Features/ProductsApi';
 import cartReducer from './Main.js/Features/cartSlice';
 
+
 const store = configureStore ({
   reducer:{
     products: productReducer,
     [productsApi.reducerPath] : productsApi.reducer,
     cart: cartReducer,
+   
   }, 
   middleware : (getDefaultMiddleware) => {
    return getDefaultMiddleware().concat(productsApi.middleware);
